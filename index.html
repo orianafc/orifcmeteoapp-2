@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous" />
+    <link rel="stylesheet" href="src/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@100;200;300;400;500;600&display=swap"
+      rel="stylesheet" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Ori's meteo app 💚</title>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <form class="search-form" id="search-form">
+          <input
+            class="search-city-input"
+            type="text"
+            name="City"
+            id="search-city-input"
+            placeholder="Enter a city..."
+            autocomplete="on"
+            autofocus="on"
+            required />
+          <input class="search-submit-input" type="submit" value="Search" />
+        </form>
+      </header>
+      <main>
+        <div class="row">
+          <div class="col">
+            <h1 class="weather-city" id="weather-city"></h1>
+            <div class="weather-details">
+              <p><span id="time"></span><span id="description"></span></p>
+              <p>
+                Humidity: <strong id="humidity"></strong>, Wind:
+                <strong id="wind-speed"></strong>, Feels like:
+                <strong id="feels-like"></strong>
+              </p>
+            </div>
+          </div>
+          <div class="col">
+            <div class="temperature-data">
+              <div id="weather-img">
+                <img
+                  src="https://ap-pics2.gotpoem.com/ap-pics/item/15661/828.jpg?WeatherCatjpg"
+                  alt="weather cat"
+                  class="weather-icon" />
+              </div>
+              <h3 class="weather-temperature" id="weather-temperature"></h3>
+              <div class="weather-unit" id="weather-unit"></div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <footer>
+        <p>
+          This project was coded by
+          <a href="https://github.com/orianafc" target="_blank"
+            >Oriana FC🐈 🐈‍⬛</a
+          >
+          and is
+          <a
+            href="https://github.com/orianafc?tab=repositories"
+            target="_blank">
+            on GitHub</a
+          >
+          and
+          <a href="https://orifcmeteoapp.netlify.app/" target="_blank"
+            >hosted on Netlify</a
+          >
+        </p>
+      </footer>
+      <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    </div>
+    <script src="src/index.js"></script>
+  </body>
+</html>
