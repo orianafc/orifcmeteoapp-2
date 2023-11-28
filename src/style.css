@@ -69,7 +69,12 @@ header {
   margin-top: 6px;
   font-size: 20px;
 }
-
+.weather-forecast-temperatures {
+  font-size: 13px;
+}
+.weather-forecast-temperature-min {
+  opacity: 0.5;
+}
 a {
   color: #77628c;
   font-size: 14px;
