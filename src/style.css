@@ -69,8 +69,17 @@ header {
   margin-top: 6px;
   font-size: 20px;
 }
+.weather-forecast {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+}
+.weather-forecast-date {
+  text-align: center;
+}
 .weather-forecast-temperatures {
   font-size: 13px;
+  text-align: center;
 }
 .weather-forecast-temperature-min {
   opacity: 0.5;

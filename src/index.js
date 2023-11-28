@@ -45,20 +45,22 @@ function searchCity(city) {
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(refreshWeather);
 }
-
-function handleSearchSubmit(event) {
-  event.preventDefault();
-  let searchInput = document.querySelector("#search-city-input");
-  searchCity(searchInput.value);
-}
-
-let searchFormElement = document.querySelector("#search-form");
-searchFormElement.addEventListener("submit", handleSearchSubmit);
-
-let forecast = document.querySelector("#weather-forecast");
-forecast.innerHTML = `<div class="row">
+function displayWeatherForecast() {
+  let days = [
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ];
+  let forecastHTML = "";
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="row">
             <div class="col">
-              <div class="weather-forecast-date">Saturday</div>
+              <div class="weather-forecast-date">${day}</div>
               <img
                 class="weather-forecast-icon"
                 src=""
@@ -71,3 +73,17 @@ forecast.innerHTML = `<div class="row">
               </div>
             </div>
           </div>`;
+  });
+  let weatherForecastElement = document.querySelector("#weather-forecast");
+  weatherForecastElement.innerHTML = forecastHTML;
+}
+function handleSearchSubmit(event) {
+  event.preventDefault();
+  let searchInput = document.querySelector("#search-city-input");
+  searchCity(searchInput.value);
+}
+
+let searchFormElement = document.querySelector("#search-form");
+searchFormElement.addEventListener("submit", handleSearchSubmit);
+
+displayWeatherForecast();
