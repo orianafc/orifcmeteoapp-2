@@ -39,9 +39,9 @@ function displayWeatherForecast(response) {
               <div class="weather-forecast-date">${day}</div>
               <img
                 class="weather-forecast-icon"
-                src=""
+                src="${day.condition.icon_url}"
                 alt="weather-forecast-icon"
-                width="42"
+                width="80"
               />
               <div class="weather-forecast-temperatures">
                 <span class="weather-forecast-temperature-min">${Math.round(
