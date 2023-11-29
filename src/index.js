@@ -26,8 +26,36 @@ function refreshWeather(response) {
 }
 function getWeatherForecast(city) {
   let apiKey = "02ab91betd0a6efa2b010d3034deffo4";
-  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKeykey}&units=metric`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeatherForecast);
+}
+function displayWeatherForecast(response) {
+  let forecastHTML = "";
+  response.data.daily.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="row">
+            <div class="col">
+              <div class="weather-forecast-date">${day}</div>
+              <img
+                class="weather-forecast-icon"
+                src=""
+                alt="weather-forecast-icon"
+                width="42"
+              />
+              <div class="weather-forecast-temperatures">
+                <span class="weather-forecast-temperature-min">${Math.round(
+                  day.temperature.minimum
+                )}ºC</span>
+                <span class="weather-forecast-temperature-max">${Math.round(
+                  day.temperature.maximum
+                )}ºC</span>
+              </div>
+            </div>
+          </div>`;
+  });
+  let weatherForecastElement = document.querySelector("#weather-forecast");
+  weatherForecastElement.innerHTML = forecastHTML;
 }
 function formatDate(date) {
   let days = [
@@ -52,38 +80,7 @@ function searchCity(city) {
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(refreshWeather);
 }
-function displayWeatherForecast() {
-  let days = [
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-    "Sunday",
-  ];
-  let forecastHTML = "";
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="row">
-            <div class="col">
-              <div class="weather-forecast-date">${day}</div>
-              <img
-                class="weather-forecast-icon"
-                src=""
-                alt="weather-forecast-icon"
-                width="42"
-              />
-              <div class="weather-forecast-temperatures">
-                <span class="weather-forecast-temperature-min">1ºC</span>
-                <span class="weather-forecast-temperature-max">10ºC</span>
-              </div>
-            </div>
-          </div>`;
-  });
-  let weatherForecastElement = document.querySelector("#weather-forecast");
-  weatherForecastElement.innerHTML = forecastHTML;
-}
+
 function handleSearchSubmit(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#search-city-input");
@@ -92,5 +89,3 @@ function handleSearchSubmit(event) {
 
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
-
-displayWeatherForecast();
