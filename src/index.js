@@ -21,6 +21,13 @@ function refreshWeather(response) {
   timeElement.innerHTML = formatDate(date);
   let iconElement = document.querySelector("#weather-img");
   iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" alt="weather-icon" class="weather-icon" />`;
+
+  getWeatherForecast(response.data.city);
+}
+function getWeatherForecast(city) {
+  let apiKey = "02ab91betd0a6efa2b010d3034deffo4";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKeykey}&units=metric`;
+  axios.get(apiUrl).then(displayWeatherForecast);
 }
 function formatDate(date) {
   let days = [
