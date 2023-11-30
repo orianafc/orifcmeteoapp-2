@@ -29,19 +29,25 @@ function getWeatherForecast(city) {
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeatherForecast);
 }
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
+  return days[date.getDay()];
+}
 function displayWeatherForecast(response) {
   let forecastHTML = "";
-  response.data.daily.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="row">
+  response.data.daily.forEach(function (day, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="row">
             <div class="col">
-              <div class="weather-forecast-date">${day}</div>
+              <div class="weather-forecast-date">${formatDay(day.time)}</div>
               <img
                 class="weather-forecast-icon"
                 src="${day.condition.icon_url}"
                 alt="weather-forecast-icon"
-                width="80"
+                width="100"
               />
               <div class="weather-forecast-temperatures">
                 <span class="weather-forecast-temperature-min">${Math.round(
@@ -53,6 +59,7 @@ function displayWeatherForecast(response) {
               </div>
             </div>
           </div>`;
+    }
   });
   let weatherForecastElement = document.querySelector("#weather-forecast");
   weatherForecastElement.innerHTML = forecastHTML;
