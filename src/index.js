@@ -47,15 +47,17 @@ function displayWeatherForecast(response) {
                 class="weather-forecast-icon"
                 src="${day.condition.icon_url}"
                 alt="weather-forecast-icon"
-                width="100"
+                width="80"
               />
               <div class="weather-forecast-temperatures">
                 <span class="weather-forecast-temperature-min">${Math.round(
                   day.temperature.minimum
-                )}ºC</span>
-                <span class="weather-forecast-temperature-max">${Math.round(
-                  day.temperature.maximum
-                )}ºC</span>
+                )}</span><span class="weather-foreast-unit">ºC</span>
+                <strong class="weather-forecast-temperature-max">
+                 ${Math.round(day.temperature.maximum)}
+                 </strong>
+                <strong class="weather-foreast-unit">
+                ºC</strong>
               </div>
             </div>
           </div>`;
