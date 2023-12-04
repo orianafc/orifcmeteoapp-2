@@ -1,4 +1,7 @@
 function refreshWeather(response) {
+  if (response.data.status === "not_found") {
+    alert("City not found, try again");
+  }
   let temperatureElement = document.querySelector("#weather-temperature");
   let temperature = response.data.temperature.current;
   let unitElement = document.querySelector("#weather-unit");
